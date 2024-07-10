@@ -28,15 +28,15 @@ class MainActivity : ComponentActivity() {
         setContent {
             VideoCallTheme {
                 val navController = rememberNavController()
-                val connectViewModel = koinViewModel<ConnectViewModel>()
-
                 Scaffold(Modifier.fillMaxSize()) { paddingValues ->
                     NavHost(
                         navController = navController,
                         startDestination = "connect",
                         modifier = Modifier.padding(paddingValues)
                     ) {
+
                         composable("connect") {
+                            val connectViewModel = koinViewModel<ConnectViewModel>()
                             LaunchedEffect(key1 = connectViewModel.state.isConnected) {
                                 if (connectViewModel.state.isConnected) {
                                     navController.navigate("video") {
@@ -55,6 +55,7 @@ class MainActivity : ComponentActivity() {
                             LaunchedEffect(key1 = videoViewModel.state.connectionState) {
                                 if (videoViewModel.state.connectionState == ConnectionState.Ended) {
                                     navController.navigate("connect") {
+                                        println("h")
                                         popUpTo("video") {
                                             inclusive = true
                                         }

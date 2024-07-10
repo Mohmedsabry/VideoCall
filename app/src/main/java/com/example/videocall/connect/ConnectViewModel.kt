@@ -37,7 +37,7 @@ class ConnectViewModel(
         }
         (app as MainApp).initStream(state.name)
         state = state.copy(
-            isConnected = true
+            isConnected = true,
         )
     }
 }

@@ -5,14 +5,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.getstream.video.android.core.StreamVideo
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class VideoViewModel(
+@HiltViewModel
+class VideoViewModel @Inject constructor(
     private val videoClient: StreamVideo
 ) : ViewModel() {
     var state by mutableStateOf(VideoState(videoClient.call("default", "room")))
         private set
+
 
     fun onEvent(event: VideoEvents) {
         when (event) {

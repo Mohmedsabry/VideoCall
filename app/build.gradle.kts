@@ -77,8 +77,12 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.hilt.andriod)
     kapt(libs.hilt.compilar)
-    implementation(libs.hilt.navigattion)
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("androidx.navigation:navigation-compose:2.5.2")
     implementation(libs.view.model)
     implementation(libs.ssp.sdp)
     implementation(libs.javapoet)
+}
+hilt {
+    enableAggregatingTask = false
 }

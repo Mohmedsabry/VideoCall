@@ -5,11 +5,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import com.MainApp
-
-class ConnectViewModel(
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+@HiltViewModel
+class ConnectViewModel @Inject constructor(
     private val app: Application
-) : AndroidViewModel(app) {
+) : ViewModel() {
     var state by mutableStateOf(ConnectState())
         private set
 
